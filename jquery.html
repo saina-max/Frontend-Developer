@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style type="text/css">
+        table tr td{
+            color:blue;
+            font-size: 22px;
+            font-weight: 22px;
+            padding:0 30px;
+            background :lightblue;
+            cursor: pointer;
+        }
+        .tabcontent
+        {
+            background: lightgray;
+            height: 300px;
+            width: 50%;
+        }
+        .hidden{
+            display: none;
+
+        }
+        .active{
+            background: yellowgreen;
+
+        }
+        .button a{
+            padding: 10px;
+            background: lightblue;
+            color: white;
+            border-radius: 10%;
+            text-decoration: none;
+        }
+        .button{
+            margin-left: 15%;
+        }
+    
+    </style></head>
+    <body>
+        <h1>jQuery</h1>
+        <table>
+            <tr>
+                <td data-target="profileDiv"class="active">Profile</td>
+                <td data-target="aboutDiv">About Us</td>
+                <td data-target="contactDiv">Contact</td>
+                <td data-target="educationDiv">Education</td>
+
+            </tr>
+        </table>
+        <div class="tabcontent">
+        <div id="profileDiv"class="tabdiv">
+            This is profile div
+        </div>
+        <div id="aboutDiv" class="tabdiv hidden">
+            This is About us div
+        </div>
+        <div id="contactDiv" class="tabdiv hidden">
+            This is Contact us div
+        </div>
+        <div id="educationDiv" class="tabdiv hidden">
+            This is Education div
+        </div>
+    </div>
+    <div class="button">
+		<a href="javascript:;" id="prev"><< PREV </a>
+		<a href="javascript:;" id="next"> NEXT >></a>
+	</div>
+        <script type="text/javascript">
+            $('td').on('click',function(){
+              var menu = $(this).data('target');
+              $('.tabdiv').addClass('hidden');
+              $('#' +menu).removeClass('hidden');
+              $('td').removeClass('active');
+              $(this).addClass('active');
+            });
+            $('#next').on('click',function(){
+			$('.active').next('td').click();
+		});
+
+		$('#prev').on('click',function(){
+			$('.active').prev('td').click();
+		});
+        </script>
+    </body>
+</html>
